@@ -2,7 +2,7 @@
 less-like utility
 
 # compile
-$ clang dldd.c -o dldd -Os
+$ clang dldd.c -o dldd -Os -s
 
 # usage
 $ ./dldd config.h
