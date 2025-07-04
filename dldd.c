@@ -10,7 +10,7 @@
 
 #include "config.h"
 
-/* version 0.1 */
+#define version "0.2"
 
 const int so = STDOUT_FILENO;
 const int si = STDIN_FILENO;
@@ -117,9 +117,32 @@ void move_cur(int key){
 	}
 }
 
+void help(const char *dldd){
+	printf("usage: %s [options]..\n", dldd);
+	printf("options:\n");
+	printf("  -v	show version information\n");
+	printf("  -h	display this\n");
+	exit(1);
+}
+
+void show_version(){
+	printf("dldd-%s\n", version);
+	exit(1);
+}
+
 int main(int argc, char **argv){
+	if(argc == 2){
+		if(strcmp(argv[1], "-h") == 0){
+			help(argv[0]);
+		}
+
+		if(strcmp(argv[1], "-v") == 0){
+			show_version();
+		}
+	}
+
 	if(argc != 2){
-		fprintf(stderr, "usage %s [file]\n", argv[0]);
+		fprintf(stderr, "usage: %s [file]\n", argv[0]);
 		return 1;
 	}
 
